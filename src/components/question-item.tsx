@@ -1,13 +1,13 @@
+import { Bot, Loader2, MessageSquare } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { dayjs } from '@/lib/dayjs'
-import { Bot, Loader2, MessageSquare } from 'lucide-react'
 
 interface Question {
   id: string
   question: string
   answer?: string | null
   createdAt: string
-  isGeneratingAnswer: boolean
+  isGeneratingAnswer?: boolean
 }
 
 interface QuestionItemProps {

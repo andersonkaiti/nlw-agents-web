@@ -17,15 +17,7 @@ export function QuestionList({ roomId }: IQuestionListProps) {
       </div>
 
       {data?.map((question) => (
-        <QuestionItem
-          key={question.id}
-          question={{
-            id: question.id,
-            question: question.question,
-            answer: question.answer,
-            createdAt: question.createdAt,
-          }}
-        />
+        <QuestionItem key={question.id} question={question} />
       ))}
     </div>
   )
