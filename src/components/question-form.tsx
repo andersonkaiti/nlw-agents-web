@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/form'
 import { Textarea } from '@/components/ui/textarea'
 import { useCreateQuestion } from '@/http/use-create-question'
+import { Loader2 } from 'lucide-react'
 
 interface IQuestionFormProps {
   roomId: string
@@ -23,6 +24,8 @@ interface IQuestionFormProps {
 
 export function QuestionForm({ roomId }: IQuestionFormProps) {
   const { form, handleCreateQuestion } = useCreateQuestion(roomId)
+
+  const { isSubmitting } = form.formState
 
   return (
     <Card>
@@ -47,6 +50,7 @@ export function QuestionForm({ roomId }: IQuestionFormProps) {
                   <FormControl>
                     <Textarea
                       className="min-h-[100px]"
+                      disabled={isSubmitting}
                       placeholder="O que você gostaria de saber?"
                       {...field}
                     />
@@ -56,7 +60,10 @@ export function QuestionForm({ roomId }: IQuestionFormProps) {
               )}
             />
 
-            <Button type="submit">Enviar pergunta</Button>
+            <Button disabled={isSubmitting} type="submit">
+              Enviar pergunta
+              {isSubmitting && <Loader2 className="size-4 animate-spin" />}
+            </Button>
           </form>
         </Form>
       </CardContent>
